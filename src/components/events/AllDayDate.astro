@@ -1,0 +1,10 @@
+---
+import { DateTime } from 'luxon';
+
+const { event } = Astro.props;
+---
+<p class="my-3">
+  <strong>Date:</strong> <time datetime={event.data.startDateTime}>
+    {DateTime.fromJSDate(event.data.startDateTime).toFormat('cccc, d LLLL, yyyy')}
+  </time>
+</p>

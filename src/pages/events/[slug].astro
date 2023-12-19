@@ -1,0 +1,46 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import AllDayDate from '../../components/events/AllDayDate.astro';
+import PeriodDate from '../../components/events/PeriodDate.astro';
+import Button from '../../components/Button.astro';
+import Modal from '../../components/Modal.astro';
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Slug not found');
+const event = await getEntry('events', slug);
+
+if (!event) throw new Error('No event found for this slug');
+const { Content } = await event.render();
+
+// Generate static pages
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map(event => ({ params: { slug: event.slug } }));
+}
+---
+
+<Layout title={event.data.title}>
+  <h1 class="text-2xl my-6">{event.data.title}</h1>
+
+  {event.data.isAllDay ? (
+    <AllDayDate event={event} />
+  ) : (
+    <PeriodDate event={event} />
+  )}
+
+  <Button
+    classes="text-white"
+  >Book tickets</Button>
+
+  <div class="prose">
+    <Content />
+  </div>
+
+</Layout>
+
+<Modal>
+  <h1 class="text-2xl my-6">My first modal</h1>
+  
+  <p class="my-6">My modal content</p>
+</Modal>

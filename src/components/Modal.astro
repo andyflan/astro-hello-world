@@ -1,0 +1,11 @@
+---
+
+const { 
+  isShowing,
+} = Astro.props;
+---
+<div class="hidden fixed top-0 left-0 w-screen h-screen bg-slate-400 bg-opacity-70">
+  <div class="absolute w-10/12 left-1/2 top-6 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 md:w-1/2 px-6 md:px-12 bg-white rounded-lg">
+    <slot />
+  </div>
+</div>

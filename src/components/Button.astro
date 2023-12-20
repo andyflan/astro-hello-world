@@ -1,7 +1,13 @@
 ---
 
-const { classes } = Astro.props;
+const { 
+  id,
+  classes,
+  type = 'button',
+} = Astro.props;
 ---
 <button 
-  class="px-6 leading-10 rounded-md bg-slate-400 hover:bg-slate-300"  
-><slot />{classes}</button>
+  id={id}
+  type={type}
+  class="px-6 outline-0 leading-10 rounded-md bg-slate-400 hover:bg-slate-300"
+><slot /></button>

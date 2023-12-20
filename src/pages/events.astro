@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../keystatic.config';
+import Layout from '../layouts/Layout.astro';
+
+const reader = createReader('', keystaticConfig)
+const eventsIndex = await reader.singletons.eventsIndex.read();
+
+const events = await getCollection('events');
+---
+
+<Layout title={eventsIndex?.title || ''}>
+  <h1 class="text-2xl my-6">{eventsIndex?.title}</h1>
+ 
+  <ul>
+    {events.map(event => (
+      <li>
+        <a 
+          href={`/events/${event.slug}`}
+          class="hover:text-red-700"
+        >{event.data.title}</a>
+      </li>
+    ))}
+  </ul>
+</Layout>

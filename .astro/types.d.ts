@@ -183,12 +183,30 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"events": {
+		"about": {
+"content.mdoc": {
+	id: "content.mdoc";
+  slug: "content";
+  body: string;
+  collection: "about";
+  data: any
+} & { render(): Render[".mdoc"] };
+};
+"events": {
 "first-event.mdoc": {
 	id: "first-event.mdoc";
   slug: "first-event";
   body: string;
   collection: "events";
+  data: any
+} & { render(): Render[".mdoc"] };
+};
+"eventsIndex": {
+"content.mdoc": {
+	id: "content.mdoc";
+  slug: "content";
+  body: string;
+  collection: "eventsIndex";
   data: any
 } & { render(): Render[".mdoc"] };
 };
@@ -199,6 +217,15 @@ declare module 'astro:content' {
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
+} & { render(): Render[".mdoc"] };
+};
+"postsIndex": {
+"content.mdoc": {
+	id: "content.mdoc";
+  slug: "content";
+  body: string;
+  collection: "postsIndex";
+  data: any
 } & { render(): Render[".mdoc"] };
 };
 

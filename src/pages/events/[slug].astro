@@ -19,7 +19,6 @@ export async function getStaticPaths() {
   return events.map(event => ({ params: { slug: event.slug } }));
 }
 ---
-
 <Layout title={event.data.title}>
   <h1 class="text-2xl my-6">{event.data.title}</h1>
 
@@ -30,6 +29,7 @@ export async function getStaticPaths() {
   )}
 
   <Button
+    id="bookTickets"
     classes="text-white"
   >Book tickets</Button>
 
@@ -37,10 +37,16 @@ export async function getStaticPaths() {
     <Content />
   </div>
 
-</Layout>
+  <Modal id="bookingModal">
+    <h1 class="text-2xl my-6">Book tickets</h1>
+    
+    <p class="my-6">You are booking tickets for.... tbc</p>
+  </Modal>
 
-<Modal>
-  <h1 class="text-2xl my-6">My first modal</h1>
+  <script>
+    document.getElementById('bookTickets').addEventListener('click', () => {
+      document.getElementById('bookingModal').classList.remove('hidden');
+    });
   
-  <p class="my-6">My modal content</p>
-</Modal>
+  </script>
+</Layout>

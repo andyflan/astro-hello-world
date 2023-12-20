@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../keystatic.config';
+import Layout from '../layouts/Layout.astro';
+
+const reader = createReader('', keystaticConfig)
+const about = await reader.singletons.about.read();
+---
+
+<Layout title={about?.title || ''}>
+  <h1 class="text-2xl my-6">{about?.title}</h1>
+ 
+  <p>TBC...</p>
+</Layout>

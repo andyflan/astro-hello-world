@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageTitle from '../components/PageTitle.astro';
 import Button from "../components/Button.astro";
 import TextInput from "../components/TextInput.astro";
 
@@ -14,7 +15,7 @@ if (accessToken && refreshToken) {
 ---
 
 <Layout title="Sign in">
-  <h1 class="text-2xl my-6">Sign in</h1>
+  <PageTitle>Sign in</PageTitle>
 
   <p class="my-6">
     New here? <a href="/register">Create an account</a>

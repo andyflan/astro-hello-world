@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageTitle from '../components/PageTitle.astro';
 import { supabase } from "../lib/supabase";
 
 const { cookies, redirect } = Astro;
@@ -30,7 +31,7 @@ if (error) {
 const email = data?.user?.email;
 ---
 <Layout title="dashboard">
-  <h1 class="text-2xl my-6">Welcome {email}</h1>
+  <PageTitle>Welcome {email}</PageTitle>
 
   <p>We are happy to see you here.</p>
   

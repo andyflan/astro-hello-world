@@ -1,19 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
-import { createReader } from '@keystatic/core/reader';
-import keystaticConfig from '../../keystatic.config';
 import Layout from '../layouts/Layout.astro';
-
-const reader = createReader('', keystaticConfig)
-const postsIndex = await reader.singletons.postsIndex.read();
+import PageTitle from '../components/PageTitle.astro';
 
 const posts = await getCollection('posts');
 ---
 
-<Layout title={postsIndex?.title || ''}>
-  <h1 class="text-2xl my-6">{postsIndex?.title}</h1>
+<Layout title="Posts">
+  <PageTitle>Posts</PageTitle>
 
-    
   <ul>
     {posts.map(post => (
       <li>

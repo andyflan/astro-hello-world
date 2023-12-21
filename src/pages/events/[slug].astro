@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import PageTitle from '../../components/PageTitle.astro';
 import AllDayDate from '../../components/events/AllDayDate.astro';
 import PeriodDate from '../../components/events/PeriodDate.astro';
 import Button from '../../components/Button.astro';
@@ -20,7 +21,7 @@ export async function getStaticPaths() {
 }
 ---
 <Layout title={event.data.title}>
-  <h1 class="text-2xl my-6">{event.data.title}</h1>
+  <PageTitle>{event.data.title}</PageTitle>
 
   {event.data.isAllDay ? (
     <AllDayDate event={event} />
